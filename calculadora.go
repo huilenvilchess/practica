@@ -3,7 +3,7 @@ package main
 type calculadora struct {
 }
 
-func (c calculadora) Sumar(a, b int) int {
+func (c calculadora) Suma(a, b int) int {
 	return a + b
 }
 

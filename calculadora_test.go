@@ -13,7 +13,7 @@ func Test_calculadora_sumar(t *testing.T) {
 	calc := &calculadora{}
 
 	// When
-	suma := calc.Sumar(10, 10)
+	suma := calc.Suma(10, 10)
 
 	// Then
 	ass.Equal(20, suma)
@@ -40,7 +40,7 @@ func Test_calculadora_division(t *testing.T) {
 	calc := &calculadora{}
 
 	// When
-	division := calc.Division(10, 10)
+	division := calc.Division(10, 0)
 
 	// Then
 	ass.Equal(1, division)

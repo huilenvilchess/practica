@@ -10,7 +10,7 @@ func main() {
 
 	for {
 		fmt.Println("Elija una operación")
-		fmt.Println("1-suma, 2-resta, 3-división, 4-multiplicar, Para salir presione A, Para continuar presione B")
+		fmt.Println("1-suma, 2-resta, 3-división, 4-multiplicación, Para salir presione A, Para continuar presione B")
 		fmt.Scanf("%d", &opc)
 
 		fmt.Println("1er número: ")
@@ -21,7 +21,7 @@ func main() {
 
 		if opc == 1 {
 			calc := &calculadora{}
-			result := calc.Sumar(numero1, numero2)
+			result := calc.Suma(numero1, numero2)
 			fmt.Printf("El resultado de la suma es %d", result)
 		} else if opc == 2 {
 			calc := &calculadora{}
