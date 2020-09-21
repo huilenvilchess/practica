@@ -1,13 +1,12 @@
 package main
 
 import (
-	"net/http"
-
+	"github.com/mercadolibre/practica/calculadora"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
-	calc := &calculadora{}
 	r := gin.Default()
 
 	r.GET("/ping", func(c *gin.Context) {
@@ -17,19 +16,19 @@ func main() {
 	})
 
 	r.POST("/suma", func(c *gin.Context) {
-		ejecutarOperacion(c, calc.Suma)
+		ejecutarOperacion(c, calculadora.Suma)
 	})
 
 	r.POST("/resta", func(c *gin.Context) {
-		ejecutarOperacion(c, calc.Resta)
+		ejecutarOperacion(c, calculadora.Resta)
 	})
 
 	r.POST("/division", func(c *gin.Context) {
-		ejecutarOperacion(c, calc.Division)
+		ejecutarOperacion(c, calculadora.Division)
 	})
 
 	r.POST("/multiplicacion", func(c *gin.Context) {
-		ejecutarOperacion(c, calc.Multiplicacion)
+		ejecutarOperacion(c, calculadora.Multiplicacion)
 	})
 
 	r.Run()
@@ -42,7 +41,12 @@ func ejecutarOperacion(c *gin.Context, operacion func(a, b int) (int, error)) {
 		return
 	}
 
-	resultado, _ := operacion(payload.Numero1, payload.Numero2)
+	resultado, err := operacion(payload.Numero1, payload.Numero2)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, err.Error())
+		return
+	}
+
 	result := Result{
 		Resultado: resultado,
 	}
