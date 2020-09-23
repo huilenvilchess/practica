@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/mercadolibre/practica/calculadora"
 	"fmt"
+
+	"github.com/mercadolibre/practica/calculadora"
 )
 
 func main() {
@@ -22,11 +23,19 @@ func main() {
 		fmt.Scanf("%d", &numero2)
 
 		if opc == 1 {
-			result, _ := calculadora.Suma(numero1, numero2)
-			fmt.Printf("El resultado de la suma es %d", result)
+			result, err := calculadora.Suma(numero1, numero2)
+			if err != nil {
+				fmt.Printf("Error %s", err.Error())
+			} else {
+				fmt.Printf("El resultado de la suma es %d", result)
+			}
 		} else if opc == 2 {
-			result, _ := calculadora.Resta(numero1, numero2)
-			fmt.Printf("El resultado de la resta es %d", result)
+			result, err := calculadora.Resta(numero1, numero2)
+			if err != nil {
+				fmt.Printf("Error %s", err.Error())
+			} else {
+				fmt.Printf("El resultado de la resta es %d", result)
+			}
 		} else if opc == 3 {
 			result, err := calculadora.Division(numero1, numero2)
 			if err != nil {
@@ -35,8 +44,12 @@ func main() {
 				fmt.Printf("El resultado de la division es %d", result)
 			}
 		} else if opc == 4 {
-			result, _ := calculadora.Multiplicacion(numero1, numero2)
-			fmt.Printf("El resultado de la multiplicacion es %d", result)
+			result, err := calculadora.Multiplicacion(numero1, numero2)
+			if err != nil {
+				fmt.Printf("Error %s", err.Error())
+			} else {
+				fmt.Printf("El resultado de la multiplicacion es %d", result)
+			}
 		}
 
 	}
